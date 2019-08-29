@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body onLoad="nowtime()">
+
+<div id="demo">
+	<div>
+		<h1 id="systemHour">00:00:00</h1>
+	</div>
+	<div>
+		<h2 id="outAlarm">00:00:00</h2>
+	</div>
+</div>
+
+</br>
+
+<div>
+	<input type="text" id="hour" placeholder="Hour">
+	<input type="text" id="min" placeholder="Minute">
+	<input type="text" id="sec" placeholder="Second">
+</div>
+
+</br></br>
+
+<div>
+    <input type="button" size="2" value="Set Alarm" onClick="setAlarm()" />
+</div>
+
+<script>
+
+function nowtime(){
+    var today= new Date();
+    //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	document.getElementById("systemHour").innerHTML = today.toLocaleTimeString("it-IT");
+    setTimeout("nowtime()", 1000);
+	alarmclock();
+}
+
+function setAlarm()
+{
+	document.getElementById("outAlarm").innerHTML = hrs + ':' + min + ':' + sec
+}
+
+function alarmclock()
+{
+	var today= new Date();
+    hrs=document.getElementById("hour").value;
+    min=document.getElementById("min").value;
+    sec=document.getElementById("sec").value;
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+
+     if((hrs==h)&&(min==m)&&(sec==s))
+     {
+         alert("wake up!")
+     }
+     else{
+         return false;
+     }
+     setTimeout("alarmclock()", 1000);
+}
+</script>
+
+</body>
+</html>
